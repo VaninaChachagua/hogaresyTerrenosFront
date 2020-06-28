@@ -1,0 +1,72 @@
+<div class="fondito">
+    <div class="btn-group m-2">
+        <button type="button" class="btn btn-success">Ordenar</button>
+        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <span class="sr-only">Ordenar</span>
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="ordenar(1,'identificador')">Nombre A-Z</a>
+            <a class="dropdown-item" (click)="ordenar(-1,'identificador')">Nombre Z-A</a>
+            <a class="dropdown-item" (click)="ordenar(1,'barrio')">Barrio A-Z</a>
+            <a class="dropdown-item" (click)="ordenar(-1,'barrio')">Barrio Z-A</a>
+            <a class="dropdown-item" (click)="ordenar(1, 'precio')">Mayor precio</a>
+            <a class="dropdown-item" (click)="ordenar(-1, 'precio')">Menor precio</a>
+        </div>
+    </div>
+    <div class="btn-group m-2">
+        <button type="button" class="btn btn-info">Tipo de Inmueble</button>
+        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Tipo de Inmueble</span>
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="filtro('tipoInmueble','Cabaña')">Cabaña</a>
+            <a class="dropdown-item" (click)="filtro('tipoInmueble','Casa')">Casa</a>
+            <a class="dropdown-item" (click)="filtro('tipoInmueble','Departamento')">Departamento</a>
+            <a class="dropdown-item" (click)="filtro('tipoInmueble','Lote')">Lote</a>
+        </div>
+    </div>
+    <div class="btn-group m-2">
+        <button type="button" class="btn btn-info">Tipo de Venta</button>
+        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Tipo de Venta</span>
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="filtro('tipoVenta','Alquiler')">Alquiler</a>
+            <a class="dropdown-item" (click)="filtro('tipoVenta','Compra')">Compra</a>
+        </div>
+    </div>
+    <div class="btn-group m-2">
+        <button type="button" class="btn btn-info">Tipo de moneda</button>
+        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Tipo de moneda</span>
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="filtro('moneda','ARS')">ARS</a>
+            <a class="dropdown-item" (click)="filtro('moneda','USD')">USD</a>
+        </div>
+    </div>
+    <div class="btn-group m-2">
+        <button type="button" class="btn btn-info">Cantidad de habitaciones</button>
+        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Cantidad de habitaciones</span>
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="filtro('cantHab','1')">1</a>
+            <a class="dropdown-item" (click)="filtro('cantHab','2')">2</a>
+            <a class="dropdown-item" (click)="filtro('cantHab','3')">3</a>
+            <a class="dropdown-item" (click)="filtro('cantHab','4')">4</a>
+            <a class="dropdown-item" (click)="filtro('cantHab','5')">5</a>
+        </div>
+    </div>
+    <div class="btn  m-2">
+        <button type="button" class="btn btn-danger" (click)="limpiar()">Limpiar filtros</button>
+    </div>
+    <div class="btn  m-2">
+        <input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+    </div>
+</div>
+
+<div class="m-3 card-columns">
+    <app-tarj-inmueble *ngFor="let inm of inmueblesFiltrados || inmuebles" [inmueble]=inm></app-tarj-inmueble>
+</div>

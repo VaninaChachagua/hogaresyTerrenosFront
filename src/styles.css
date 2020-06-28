@@ -1,1 +1,112 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: black;
+    color: white !important;
+}
+
+hr {
+    border-color: white;
+}
+
+.puntero {
+    cursor: pointer;
+}
+
+.img-circle {
+    border-radius: 100%;
+    width: 150px;
+}
+
+.card-title,
+.card-text {
+    color: black;
+}
+
+.badge {
+    margin-left: 5px;
+}
+
+.btn-outline-success {
+    margin-left: 5px;
+}
+
+.img-thumb {
+    width: 50px;
+    height: 50px;
+}
+
+
+/* Animaciones */
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+#formulario {
+    position: relative;
+    left: 50%;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    padding: 10px;
+    /* border: 5px solid crimson; */
+    /* background-color: steelblue; */
+    font-weight: bold;
+    color: black;
+}
+
+#formulario>button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.login {
+    height: 100vh;
+    width: 100vw;
+    background: url(./assets/img/inmobiliaria.png) no-repeat center center fixed;
+    background-size: 100%;
+    /* opacity: 0.7; */
+    top: 0;
+    z-index: -1;
+}
+
+.padre_carrusel {
+    position: relative;
+    height: 50vh;
+    width: 100vw;
+}
+
+.padre_carrusel {
+    height: fit-content;
+    position: relative;
+    width: 100vw;
+}
+
+body {
+    overflow-x: hidden;
+}
