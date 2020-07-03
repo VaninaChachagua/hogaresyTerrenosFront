@@ -11,6 +11,8 @@
             <a class="dropdown-item" (click)="ordenar(-1,'barrio')">Barrio Z-A</a>
             <a class="dropdown-item" (click)="ordenar(1, 'precio')">Mayor precio</a>
             <a class="dropdown-item" (click)="ordenar(-1, 'precio')">Menor precio</a>
+            <a class="dropdown-item" (click)="ordenar(1, 'fechaAlta')">Más recientes</a>
+            <a class="dropdown-item" (click)="ordenar(-1, 'fechaAlta')">Más antiguos</a>
         </div>
     </div>
     <div class="btn-group m-2">
@@ -62,11 +64,17 @@
         <button type="button" class="btn btn-danger" (click)="limpiar()">Limpiar filtros</button>
     </div>
     <div class="btn  m-2">
-        <input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-sm-2" id="searchInput" [(ngModel)]="buscandoSearch" (keyup)="search($event)" type="text" placeholder="Search" aria-label="Search">
         <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
     </div>
 </div>
 
 <div class="m-3 card-columns">
-    <app-tarj-inmueble *ngFor="let inm of inmueblesFiltrados || inmuebles" [inmueble]=inm></app-tarj-inmueble>
+    <app-tarj-inmueble *ngFor="let inm of inmueblesFiltrados || inmuebles " [inmueble]=inm></app-tarj-inmueble>
 </div>
+
+<!-- <div *ngIf="inmueblesFiltrados.length == 0 ">
+    <div class="alert alert-info" role="alert">
+        No existen resultados compatibles con su búsqueda.
+    </div>
+</div> -->

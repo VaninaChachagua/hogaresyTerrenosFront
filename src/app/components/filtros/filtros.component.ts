@@ -9,6 +9,8 @@ import { ConsultasService } from '../../services/consultas.service';
 export class FiltrosComponent implements OnInit {
   inmuebles: any;
   inmueblesFiltrados: any;
+  buscandoSearch: any;
+  inmueblesxFiltro: any;
 
   constructor( private consultasService: ConsultasService ) { }
 
@@ -27,38 +29,34 @@ export class FiltrosComponent implements OnInit {
     arrInmuebles.forEach(element => {
       console.log(element.precio);
     });
+    this.inmueblesxFiltro =  this.inmueblesFiltrados || this.inmuebles;
   }
-  filtro(tipo, valor){
+  filtro(tipo, valor) {
     const arrInmuebles = this.inmueblesFiltrados || this.inmuebles;
     this.inmueblesFiltrados = arrInmuebles.filter(a => a[tipo].toLowerCase() === valor.toLowerCase());
     console.log(this.inmueblesFiltrados);
+    this.inmueblesxFiltro =  this.inmueblesFiltrados || this.inmuebles;
   }
   limpiar() {
     this.inmueblesFiltrados = undefined;
+    this.buscandoSearch = '';
   }
-  // $('#searchBar').keyup(e => {
-  //   this.searchBarText = e.target.value;
-  //   if (this.searchBarText.length === 0) {
-  //     $('#controlMinChars').css('color', '#6c757d');
-  //     this.componentsFiltered = [];
-  //     this.linesToWrite = [];
-  //     this.flagToWrite = 0;
-  //     this.addLines();
-  //   } else {
-  //     if (this.searchBarText.length > 2) {
-  //       $('#controlMinChars').css('color', '#6c757d');
-  //       const arr = this.componentsMini.filter(c =>
-  //         Object.values(c).find((a: string) => a ? a.toLowerCase().includes(this.searchBarText.toLowerCase()) : null));
-  //       this.linesToWrite = [];
-  //       this.flagToWrite = 0;
-  //       this.componentsFiltered = arr;
-  //       this.addLines();
-  //     } else {
-  //       this.searchBarText = '';
-  //       $('#controlMinChars').css('color', 'red');
-  //     }
-  //   }
-  //   this.scrollTop();
-  // });
+
+  search(event: any){
+    console.log(event);
+    const buscando = event.target.value;
+    // inmueblesFiltrados
+    this.inmueblesFiltrados = this.inmueblesxFiltro;
+    if (buscando.length > 0) {
+
+      this.inmueblesFiltrados = this.inmueblesFiltrados.filter(c => {
+        console.log(Object.values(c));
+        return Object.values(c).find((a: string) => {
+          console.log(a);
+          return a.toString().toLowerCase().includes(buscando.toLowerCase());
+        });
+      });
+    }
+  }
 
 }

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,8 @@ import { CarruselImagenesComponent } from './components/carrusel-imagenes/carrus
 import { FiltrosComponent } from './components/filtros/filtros.component';
 import { CargarusuarioComponent } from './pages/cargarusuario/cargarusuario.component';
 import { CargarinmuebleComponent } from './pages/cargarinmueble/cargarinmueble.component';
+import { GraficosComponent } from './pages/graficos/graficos.component';
+import { InmuebleComponent } from './pages/inmueble/inmueble.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +28,15 @@ import { CargarinmuebleComponent } from './pages/cargarinmueble/cargarinmueble.c
     CarruselImagenesComponent,
     FiltrosComponent,
     CargarusuarioComponent,
-    CargarinmuebleComponent
+    CargarinmuebleComponent,
+    GraficosComponent,
+    InmuebleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

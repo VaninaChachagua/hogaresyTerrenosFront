@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tarj-inmueble',
@@ -6,10 +8,18 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./tarj-inmueble.component.css']
 })
 export class TarjInmuebleComponent implements OnInit {
-  @Input() inmueble: any ;
-  constructor() { }
-
+  // Mostrar los datos en cada tarjeta
+  @Input() inmueble: any = {};
+  // Redireccionar al detalle
+  @Input() index: number;
+  @Output() inmuebleSeleccionado: EventEmitter<number>;
+  constructor( private router: Router) {
+    this.inmuebleSeleccionado = new EventEmitter();
+  }
   ngOnInit() {
   }
-
+  verInmueble(id: string) {
+    console.log(id);
+    this.router.navigate(['/detalleInmueble/' + id]);
+  }
 }
