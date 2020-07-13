@@ -6,6 +6,7 @@ import { CargarusuarioComponent } from './pages/cargarusuario/cargarusuario.comp
 import { CargarinmuebleComponent } from './pages/cargarinmueble/cargarinmueble.component';
 import { GraficosComponent } from './pages/graficos/graficos.component';
 import { InmuebleComponent } from './pages/inmueble/inmueble.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'cargarInmueble', component: CargarinmuebleComponent },
   { path: 'detalleInmueble/:id', component: InmuebleComponent },
   { path: 'mostrarGraficos', component: GraficosComponent },
+  { path: 'error', component: NotFoundComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];

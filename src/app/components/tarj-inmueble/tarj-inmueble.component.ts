@@ -23,3 +23,6 @@ export class TarjInmuebleComponent implements OnInit {
     this.router.navigate(['/detalleInmueble/' + id]);
   }
 }
+// A$R 1000
+// U$D 1000
+

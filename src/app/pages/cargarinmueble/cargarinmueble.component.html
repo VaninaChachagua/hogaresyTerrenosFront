@@ -16,8 +16,8 @@
                 <div class="col-md-6 mb-3">
                     <label for="moneda">Moneda:</label>
                     <select class="custom-select d-block w-100" id="moneda" required>
-                      <option value="ARS">ARS</option>
-                      <option value="USD">USD</option>
+                      <option value="A$R">A$R</option>
+                      <option value="U$D">U$D</option>
                     </select>
                 </div>
             </div>
@@ -60,8 +60,19 @@
 
             <!-- <div class="form-group">
                 <label for="archivo">Example file input:</label>
-                <input type="file" class="form-control-file" id="archivo">
+                <input #imageInput type="file" accept="image/*" (change)="obtenerImagen(imageInput)">
             </div> -->
+
+            <div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Archivos</label>
+                    <div class="col-sm-8">
+                        <input #imageInput type="file" class="form-control" id="archivo[]" name="archivo[]" multiple="" (change)="obtenerImagen(imageInput)">
+                    </div>
+
+                </div>
+            </div>
+
         </div>
         <button type="button" class="btn btn-primary btn-lg btn-block" (click)="crearInmueble()">Guardar</button>
     </div>

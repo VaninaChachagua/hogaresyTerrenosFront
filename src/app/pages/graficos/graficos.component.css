@@ -1,0 +1,8 @@
+.costadito {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.costadito:hover {
+    text-decoration: underline;
+}

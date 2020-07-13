@@ -32,4 +32,19 @@ export class InmueblesService {
       return of(result as T);
     };
   }
+  uploadImage(images: FileList, id) {
+    const formData = new FormData();
+    Array.from(images).forEach(image => {
+      formData.append('archivo', image);
+    });
+    console.log(formData);
+    return this.http.put(endpoint + '/upload/inmuebles/' + id, formData).pipe(catchError(this.handleError<any>('inmueble')));
+  }
+  uploadArchivos(image: File, id) {
+    const formData = new FormData();
+    formData.append('archivo', image);
+    console.log(formData);
+    return this.http.put(endpoint + '/uploadarchivos/' + id, formData).pipe(catchError(this.handleError<any>('inmueble')));
+  }
+
 }

@@ -16,6 +16,7 @@ import { CargarusuarioComponent } from './pages/cargarusuario/cargarusuario.comp
 import { CargarinmuebleComponent } from './pages/cargarinmueble/cargarinmueble.component';
 import { GraficosComponent } from './pages/graficos/graficos.component';
 import { InmuebleComponent } from './pages/inmueble/inmueble.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { InmuebleComponent } from './pages/inmueble/inmueble.component';
     CargarusuarioComponent,
     CargarinmuebleComponent,
     GraficosComponent,
-    InmuebleComponent
+    InmuebleComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
