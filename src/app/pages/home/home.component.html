@@ -1,6 +1,6 @@
 <!-- <app-navbar></app-navbar> -->
-<div class="padre_carrusel">
-    <app-carrusel-imagenes></app-carrusel-imagenes>
+<div class="padre_carrusel" *ngIf="imagenesInmueble.length != 0">
+    <app-carrusel-imagenes [imagenesInmueble]="imagenesInmueble"></app-carrusel-imagenes>
 </div>
 
 <!-- 

@@ -17,6 +17,9 @@ import { CargarinmuebleComponent } from './pages/cargarinmueble/cargarinmueble.c
 import { GraficosComponent } from './pages/graficos/graficos.component';
 import { InmuebleComponent } from './pages/inmueble/inmueble.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { InformacionAdicionalComponent } from './pages/informacion-adicional/informacion-adicional.component';
+import { CargarArchivosComponent } from './pages/cargar-archivos/cargar-archivos.component';
+import { ArbolArchivosComponent } from './components/arbol-archivos/arbol-archivos.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     CargarinmuebleComponent,
     GraficosComponent,
     InmuebleComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    InformacionAdicionalComponent,
+    CargarArchivosComponent,
+    ArbolArchivosComponent
   ],
   imports: [
     BrowserModule,

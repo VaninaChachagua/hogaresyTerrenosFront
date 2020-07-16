@@ -9,18 +9,25 @@ import { Router } from '@angular/router';
   styles: []
 })
 export class LogInComponent implements OnInit {
+  localStorage: any;
 
-  constructor( private loginService: LoginService, private router: Router) { }
+  constructor( private loginService: LoginService, private router: Router) {
+    this.localStorage = localStorage;
+  }
 
   ngOnInit() {
   }
+
   login() {
     const email = (document.getElementById('email') as HTMLInputElement).value;
     const pass = (document.getElementById('password') as HTMLInputElement).value;
-    this.loginService.loginAuthentication(email, pass).subscribe(data => { 
+    this.loginService.loginAuthentication(email, pass).subscribe(data => {
       console.log(data);
       if (data.ok) {
-        this.router.navigate(['home']);
+        this.localStorage.setItem('tk', data.token);
+        // this.router.navigate(['home']);
+        // window.location.replace(`${ window.location.hostname }/home`);
+        window.open(`${ window.location.hostname }/home`, '_self');
       } else {
         console.error('No se ha podido cargar la petición');
       }

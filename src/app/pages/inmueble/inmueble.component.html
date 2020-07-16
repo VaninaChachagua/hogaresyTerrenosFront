@@ -7,8 +7,12 @@
     position: relative;
     height: 100%;">
         <div>
-            <img src="http://localhost:3000/{{inmueble.img}}" class="img-fluid" [alt]="inmueble.descripcion">
+            <!-- <img src="http://localhost:3000/{{inmueble.img}}" class="img-fluid" [alt]="inmueble.descripcion"> -->
+            <div class="padre_carrusel" *ngIf="imagenesInmueble.length != 0">
+                <app-carrusel-imagenes [imagenesInmueble]="imagenesInmueble"></app-carrusel-imagenes>
+            </div>
             <br><br>
+            <a (click)="cargarArchivos()" class="btn btn-outline-info btn-block">Cargar Archivos</a>
             <a [routerLink]="['/home']" class="btn btn-outline-danger btn-block">Regresar</a>
         </div>
     </div>

@@ -19,9 +19,7 @@ export class FiltrosComponent implements OnInit {
     this.inmuebles = data.inmueble;
     // identificador
     // precio
-    data.inmueble.forEach(element => {
-      console.log(element.identificador);
-    });
+    console.log(data);
     });
   }
   ordenar(orden, tipo) {

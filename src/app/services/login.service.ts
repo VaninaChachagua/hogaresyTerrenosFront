@@ -20,4 +20,8 @@ export class LoginService {
       return of(result as T);
     };
   }
+  obtenerRole() {
+    const tk = localStorage.getItem('tk');
+    return this.http.get(endpoint + '/obtenerRolePorToken/' + tk).pipe(catchError(this.handleError<any>('obtenerRole')));
+  }
 }

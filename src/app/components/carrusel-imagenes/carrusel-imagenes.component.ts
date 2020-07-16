@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ConsultasService } from '../../services/consultas.service';
 
 @Component({
   selector: 'app-carrusel-imagenes',
@@ -6,14 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carrusel-imagenes.component.css']
 })
 export class CarruselImagenesComponent implements OnInit {
-  imagenesInmueble: any;
+  imagenInmueble: any = [];
+  inmuebles: any = [];
 
-  constructor() { }
+  @Input() imagenesInmueble: any = [];
+
+  constructor() {  }
 
   ngOnInit() {
-  }
-  buscarImagenes(){
-    //Función para buscar el listado de imagenes del inmuebles y enviarlas al front
+    this.convertirArray();
   }
 
+  convertirArray() {
+    // this.inmueble.forEach(element => {
+    //   this.imagenesInmueble.push (element);
+    // });
+    Object.keys(this.imagenesInmueble).forEach(e => {
+      // tslint:disable-next-line: max-line-length
+      this.imagenInmueble.push({ identificador: this.imagenesInmueble[e].identificador, img: this.imagenesInmueble[e].img[0], cantidad: this.imagenesInmueble[e].visitas });
+    });
+  }
 }

@@ -1,0 +1,7 @@
+<ul id="myUL" *ngIf="this.inmueble">
+    <li *ngFor="let tipoArch of archivosKeys"><span class="caret">{{ tipoArch }}</span>
+        <ul class="nested">
+            <li *ngFor="let arch of inmueble.archivos[tipoArch]">{{ arch }}</li>
+        </ul>
+    </li>
+</ul>

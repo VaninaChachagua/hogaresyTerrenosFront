@@ -13,15 +13,17 @@
                     <a class="nav-link" routerLink="home">Home </a>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" routerLink="cargarUsuario">Cargar usuario</a>
+                    <a class="nav-link" routerLink="cargarUsuario" *ngIf="role === 'ADMIN_ROLE'">Cargar usuario</a>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" routerLink="cargarInmueble">Cargar inmueble</a>
+                    <a class="nav-link" routerLink="cargarInmueble" *ngIf="role === 'ADMIN_ROLE'">Cargar inmueble</a>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" routerLink="mostrarGraficos">Mostrar Graficos</a>
+                    <a class="nav-link" routerLink="mostrarGraficos" *ngIf="role === 'ADMIN_ROLE'">Mostrar Graficos</a>
                 </li>
-
+                <!-- <li class="nav-item" routerLinkActive="active"> pasar el id acá ver cómo-...
+                    <a class="nav-link" routerLink="informacion-adicional" *ngIf="role === 'USER_ROLE'">Información adicional</a>
+                </li> -->
             </ul>
 
         </div>
