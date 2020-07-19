@@ -9,6 +9,7 @@ import { InmuebleComponent } from './pages/inmueble/inmueble.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { InformacionAdicionalComponent } from './pages/informacion-adicional/informacion-adicional.component';
 import { CargarArchivosComponent } from './pages/cargar-archivos/cargar-archivos.component';
+import { EditarInmuebleComponent } from './pages/editar-inmueble/editar-inmueble.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'informacion-adicional/:id', component: InformacionAdicionalComponent },
   { path: 'mostrarGraficos', component: GraficosComponent },
   { path: 'cargarArchivos/:id', component: CargarArchivosComponent },
+  { path: 'editarInmueble/:id', component: EditarInmuebleComponent },
   { path: 'error', component: NotFoundComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: '**', pathMatch: 'full', redirectTo: 'home'}

@@ -52,4 +52,7 @@ export class InmuebleComponent implements OnInit {
   cargarArchivos() {
     this.router.navigate([`/cargarArchivos/${ this.inmueble._id }`]);
   }
+  editarInmueble() {
+    this.router.navigate([`/editarInmueble/${ this.inmueble._id }`]);
+  }
 }

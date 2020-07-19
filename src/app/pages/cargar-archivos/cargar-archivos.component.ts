@@ -29,18 +29,21 @@ export class CargarArchivosComponent implements OnInit {
     });
   }
 
-  // cargarArchivos() {
-  //   const tipoArchivo = (document.getElementById('tipoArchivo') as HTMLInputElement).value;
-  //   if (!this.inmueble.archivos[tipoArchivo]) {
-  //     this.inmueble.archivos[tipoArchivo] = [];
-  //   } else {
-  //     this.inmueble.archivos[tipoArchivo].push();
-  //   }
-  // }
+  cargarArchivos() {
+    const tipoArchivo = (document.getElementById('tipoArchivo') as HTMLInputElement).value;
+    if (!this.inmueble.archivos[tipoArchivo]) {
+      this.inmueble.archivos[tipoArchivo] = [];
+    } else {
+      this.inmueble.archivos[tipoArchivo].push();
+    }
+  }
 
   uploadArchivo() {
     console.log(this.archivo);
-    this.inmueblesService.uploadArchivos(this.archivo, this.id).subscribe(
+    // this.inmueblesService.uploadArchivos(this.archivo, this.id).subscribe(
+    const tipoArchivo = (document.getElementById('tipoArchivo') as HTMLInputElement).value;
+    console.log(tipoArchivo);
+    this.inmueblesService.uploadArchivos(this.archivo, tipoArchivo, this.id).subscribe(
       (res) => {
         if (res.ok) {
           console.log('Se cargó con archivo');

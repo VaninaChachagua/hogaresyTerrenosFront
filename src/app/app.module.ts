@@ -20,6 +20,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { InformacionAdicionalComponent } from './pages/informacion-adicional/informacion-adicional.component';
 import { CargarArchivosComponent } from './pages/cargar-archivos/cargar-archivos.component';
 import { ArbolArchivosComponent } from './components/arbol-archivos/arbol-archivos.component';
+import { EditarInmuebleComponent } from './pages/editar-inmueble/editar-inmueble.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ArbolArchivosComponent } from './components/arbol-archivos/arbol-archiv
     NotFoundComponent,
     InformacionAdicionalComponent,
     CargarArchivosComponent,
-    ArbolArchivosComponent
+    ArbolArchivosComponent,
+    EditarInmuebleComponent
   ],
   imports: [
     BrowserModule,

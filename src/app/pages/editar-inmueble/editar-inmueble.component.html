@@ -1,0 +1,79 @@
+<div>
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>Editar inmueble</h2>
+        </div>
+        <div class="col-md-8 order-md-1" *ngIf="inmueble">
+            <div class="mb-3">
+                <label for="identificador">Nombre o identificador del inmueble:</label>
+                <input type="text" class="form-control" id="identificador" value="{{inmueble.identificador}}" required>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="precio">Precio:</label>
+                    <input type="number" class="form-control" value="{{inmueble.precio}}" id="precio" value="" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="moneda">Moneda:</label>
+                    <select class="custom-select d-block w-100" value="{{inmueble.moneda}}" id="moneda" required>
+                    <option value="A$R">A$R</option>
+                    <option value="U$D">U$D</option>
+                  </select>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="barrio">Barrio:</label>
+                <input type="text" class="form-control" id="barrio" value="{{inmueble.barrio}}" required>
+            </div>
+            <div class="mb-3">
+                <label for="direccion">Direccion:</label>
+                <input type="text" class="form-control" id="direccion" value="{{inmueble.direccion}}" required>
+            </div>
+
+            <div class="mb-3 ">
+                <label for="descripcion">Descripcion:</label>
+                <!-- <input type="text" class="form-control" id="descripcion" placeholder="Departamento espacioso de 2 habitaciones, 1 baño, cocina comedor...." required> -->
+                <textarea class="form-control" id="descripcion" aria-label="With textarea" value="{{inmueble.descripcion}}" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="cantHab">Cantidad de habitaciones: </label>
+                <input type="number" class="form-control" id="cantHab" value="{{inmueble.cantHab}}">
+            </div>
+            <div class="mb-3">
+                <label for="tipoInmueble">Tipo Inmueble:</label>
+                <select class="custom-select d-block w-100" id="tipoInmueble" required>
+              <option value="casa">Casa</option>
+              <option value="dpto">Departamento</option>
+              <option value="terreno">Terreno</option>
+              <option value="cabaña">Cabaña</option>
+            </select>
+            </div>
+            <div class="mb-3">
+                <label for="tipoVenta">Tipo venta:</label>
+                <select class="custom-select d-block w-100" id="tipoVenta" value="{{inmueble.tipoVenta}}" required>
+              <option value="alquiler">Alquiler</option>
+              <option value="venta">Venta</option>
+              <option value="alquiler-venta">Alquiler/Venta</option>
+            </select>
+            </div>
+
+            <!-- <div class="form-group">
+              <label for="archivo">Example file input:</label>
+              <input #imageInput type="file" accept="image/*" (change)="obtenerImagen(imageInput)">
+          </div> -->
+
+            <div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Archivos</label>
+                    <div class="col-sm-8">
+                        <input #imageInput type="file" class="form-control" id="archivo[]" name="archivo[]" multiple="" (change)="obtenerImagen(imageInput)">
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="crearInmueble()">Guardar</button>
+    </div>
+</div>
