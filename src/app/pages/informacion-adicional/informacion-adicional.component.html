@@ -1,3 +1,19 @@
-<p>
-  informacion-adicional works!
-</p>
+<h1 class="animated fadeIn" *ngIf="user">
+    Archivos de Inmuebles<small *ngIf="user.role === 'ROLE_USER'"> de {{ user.nombre }} {{ user.apellido }}</small>
+</h1>
+<hr>
+<div *ngIf="user" class="row animated fadeIn fast" style="height: 60vh;">
+    <div style=" width: 40%; position: relative; height: 100%;">
+        <div style="width: 70%; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <label for="inmueble" style="font-weight: 400; font-size: 30px;">Inmueble:</label>
+            <select #selectInmueble class="custom-select d-block w-100" id="inmueble" (change)="obtenerInmuebleSeleccionado(selectInmueble)" required>
+        <option value="{{ inm._id }}" *ngFor="let inm of inmuebles" >{{ inm.identificador }}</option>
+      </select>
+        </div>
+    </div>
+    <div *ngIf="inmuebles" style="position: relative; width: 59%; overflow: auto;">
+        <div style="position: absolute; overflow: auto; width: auto; left: 50%; transform: translateX(-50%); font-size: 20px;">
+            <app-arbol-archivos [idInm]="inmuebleSeleccionado"></app-arbol-archivos>
+        </div>
+    </div>
+</div>

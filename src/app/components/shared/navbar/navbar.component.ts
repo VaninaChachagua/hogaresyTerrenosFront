@@ -18,9 +18,9 @@ export class NavbarComponent implements OnInit {
   }
 
   obtenerRole() {
-    this.loginService.obtenerRole().subscribe(data => {
+    this.loginService.obtenerInfoPorTk().subscribe(data => {
       if (data.ok) {
-        this.role = data.role;
+        this.role = data.dec.role;
       } else {
         this.role = null;
       }

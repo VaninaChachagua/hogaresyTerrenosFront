@@ -96,15 +96,9 @@ hr {
 }
 
 .padre_carrusel {
-    position: relative;
-    height: 50vh;
-    width: 100vw;
-}
-
-.padre_carrusel {
     height: fit-content;
     position: relative;
-    width: 100vw;
+    width: 100%;
 }
 
 body {

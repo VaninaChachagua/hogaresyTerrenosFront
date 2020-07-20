@@ -21,6 +21,7 @@ import { InformacionAdicionalComponent } from './pages/informacion-adicional/inf
 import { CargarArchivosComponent } from './pages/cargar-archivos/cargar-archivos.component';
 import { ArbolArchivosComponent } from './components/arbol-archivos/arbol-archivos.component';
 import { EditarInmuebleComponent } from './pages/editar-inmueble/editar-inmueble.component';
+import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { EditarInmuebleComponent } from './pages/editar-inmueble/editar-inmueble
     InformacionAdicionalComponent,
     CargarArchivosComponent,
     ArbolArchivosComponent,
-    EditarInmuebleComponent
+    EditarInmuebleComponent,
+    EditarUsuarioComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@ position: absolute;
 .medio {
     transform: translateX(-50%);
     height: 60vh;
-    width: 60%!important;
+    max-width: 85%!important;
     left: 50%;
 }
 

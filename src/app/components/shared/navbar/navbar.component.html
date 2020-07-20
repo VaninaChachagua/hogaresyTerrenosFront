@@ -21,9 +21,9 @@
                 <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link" routerLink="mostrarGraficos" *ngIf="role === 'ADMIN_ROLE'">Mostrar Graficos</a>
                 </li>
-                <!-- <li class="nav-item" routerLinkActive="active"> pasar el id acá ver cómo-...
-                    <a class="nav-link" routerLink="informacion-adicional" *ngIf="role === 'USER_ROLE'">Información adicional</a>
-                </li> -->
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="informacion-adicional" *ngIf="role">Información adicional</a>
+                </li>
             </ul>
 
         </div>

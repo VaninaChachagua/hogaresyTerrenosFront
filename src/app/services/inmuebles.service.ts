@@ -22,6 +22,10 @@ export class InmueblesService {
     // tslint:disable-next-line: max-line-length
     return this.http.post(endpoint + '/inmueble', {identificador, precio, moneda, direccion, barrio, descripcion, cantHab, tipoInmueble, tipoVenta, usuario}).pipe(catchError(this.handleError<any>('inmueble')));
   }
+  putInmueble(identificador, precio, moneda, direccion, barrio, descripcion, cantHab, tipoInmueble, tipoVenta, usuario) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(endpoint + '/inmueble', {identificador, precio, moneda, direccion, barrio, descripcion, cantHab, tipoInmueble, tipoVenta, usuario}).pipe(catchError(this.handleError<any>('inmueble')));
+  }
   putVisitas(id) {
     return this.http.put(endpoint + '/inmueble/visitas/' + id, {}).pipe(catchError(this.handleError<any>('inmueble')));
   }

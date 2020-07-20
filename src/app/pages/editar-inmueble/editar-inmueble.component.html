@@ -11,28 +11,35 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="precio">Precio:</label>
-                    <input type="number" class="form-control" value="{{inmueble.precio}}" id="precio" value="" required>
+                    <input type="number" class="form-control" id="precio" value="{{inmueble.precio}}" required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="moneda">Moneda:</label>
-                    <select class="custom-select d-block w-100" value="{{inmueble.moneda}}" id="moneda" required>
-                    <option value="A$R">A$R</option>
-                    <option value="U$D">U$D</option>
+                    <select class="custom-select d-block w-100" id="moneda" value="{{inmueble.moneda}}" required>
+                    <option value="A$R" id="A$R">A$R</option>
+                    <option value="U$D" id="U$D">U$D</option>
                   </select>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="barrio">Barrio:</label>
-                <input type="text" class="form-control" id="barrio" value="{{inmueble.barrio}}" required>
+                <input type="text" class="form-control" id="barrio" value="{{inmueble.direccion}}" required>
             </div>
             <div class="mb-3">
                 <label for="direccion">Direccion:</label>
-                <input type="text" class="form-control" id="direccion" value="{{inmueble.direccion}}" required>
+                <input type="text" class="form-control" id="direccion" value="{{inmueble.barrio}}" required>
             </div>
 
             <div class="mb-3 ">
                 <label for="descripcion">Descripcion:</label>
-                <!-- <input type="text" class="form-control" id="descripcion" placeholder="Departamento espacioso de 2 habitaciones, 1 baño, cocina comedor...." required> -->
+                <!-- <input type="text" class="form-control" id="descripcion" placeholder="Departamento espacioso de 2 habitaciones, 1 baño, cocina comedor...." value="{{inmueble.precio
+inmueble.moneda
+inmueble.direccion
+inmueble.barrio
+inmueble.descripcion
+inmueble.cantHab
+inmueble.tipoInmueble
+inmueble.tipoVenta}}" required> -->
                 <textarea class="form-control" id="descripcion" aria-label="With textarea" value="{{inmueble.descripcion}}" required></textarea>
             </div>
 
@@ -42,7 +49,7 @@
             </div>
             <div class="mb-3">
                 <label for="tipoInmueble">Tipo Inmueble:</label>
-                <select class="custom-select d-block w-100" id="tipoInmueble" required>
+                <select class="custom-select d-block w-100" id="tipoInmueble" value="{{inmueble.tipoInmueble}}" required>
               <option value="casa">Casa</option>
               <option value="dpto">Departamento</option>
               <option value="terreno">Terreno</option>
@@ -52,9 +59,9 @@
             <div class="mb-3">
                 <label for="tipoVenta">Tipo venta:</label>
                 <select class="custom-select d-block w-100" id="tipoVenta" value="{{inmueble.tipoVenta}}" required>
-              <option value="alquiler">Alquiler</option>
-              <option value="venta">Venta</option>
-              <option value="alquiler-venta">Alquiler/Venta</option>
+                  <option value="alquiler" id ="alquiler">Alquiler</option>
+                  <option value="venta" id ="venta">Venta</option>
+                  <option value="alquiler-venta" id ="alquiler-venta">Alquiler/Venta</option>
             </select>
             </div>
 
@@ -74,6 +81,6 @@
             </div>
 
         </div>
-        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="crearInmueble()">Guardar</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="actualizarInmueble()">Guardar cambios</button>
     </div>
 </div>

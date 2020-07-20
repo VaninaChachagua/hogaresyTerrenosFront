@@ -15,9 +15,16 @@ export class UsuariosService {
   getUsuario(mail) {
     return this.http.get(endpoint + '/usuarios/' + mail).pipe(catchError(this.handleError<any>('getUsuarios')));
   }
+  getUsuarioId(mail) {
+    return this.http.get(endpoint + '/usuarioid/' + mail).pipe(catchError(this.handleError<any>('getUsuarios')));
+  }
   postUsuario(nombre, apellido, email, telefono1, telalternativo, password, role) {
     // tslint:disable-next-line: max-line-length
     return this.http.post(endpoint + '/usuario', {nombre, apellido, email, telefono1, telalternativo, password, role}).pipe(catchError(this.handleError<any>('usuario')));
+  }
+  putUsuario(nombre, apellido, email, telefono1, telalternativo, password, role) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.put(endpoint + '/usuario', {nombre, apellido, email, telefono1, telalternativo, password, role}).pipe(catchError(this.handleError<any>('usuario')));
   }
   // mostrar errores en chrome
   private handleError<T>(operation = 'operation', result?: T) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { InmueblesService } from '../../services/inmuebles.service';
 
 @Component({
@@ -6,20 +6,20 @@ import { InmueblesService } from '../../services/inmuebles.service';
   templateUrl: './arbol-archivos.component.html',
   styleUrls: ['./arbol-archivos.component.css']
 })
-export class ArbolArchivosComponent implements OnInit {
+export class ArbolArchivosComponent implements OnChanges {
 
-  @Input() id: string;
+  @Input() idInm: string ;
   inmueble: any;
   archivosKeys: any;
 
   constructor(private inmueblesService: InmueblesService) {
-    this.loadInmueble();
   }
 
-  ngOnInit() {
-    setTimeout(() => {
-      this.loadTreeEvents();
-    }, 1);
+  // tslint:disable-next-line: use-life-cycle-interface
+  ngOnChanges(): void {
+    if (this.idInm) {
+      this.loadInmueble();
+    }
   }
 
   loadTreeEvents() {
@@ -34,27 +34,19 @@ export class ArbolArchivosComponent implements OnInit {
   }
 
   loadInmueble() {
-    this.inmueblesService.getInmueble(this.id).subscribe(data => {
+    console.log(this.idInm);
+    this.inmueblesService.getInmueble(this.idInm).subscribe(data => {
       if (data.ok) {
-        // this.inmueble = data.inmueble;
-        this.inmueble = {
-          archivos: {
-            Agua: ['archivo1.pdf', 'archivo2.pdf'],
-            Alquileres: ['archivo1.pdf', 'archivo2.pdf'],
-            Comprobantes: ['archivo1.pdf', 'archivo2.pdf'],
-            Contratos: ['archivo1.pdf', 'archivo2.pdf'],
-            Deudas: ['archivo1.pdf', 'archivo2.pdf'],
-            Escrituras: ['archivo1.pdf', 'archivo2.pdf'],
-            Expensas: ['archivo1.pdf', 'archivo2.pdf'],
-            Gas: ['archivo1.pdf', 'archivo2.pdf'],
-            'Inmobiliario Municipal': ['archivo1.pdf', 'archivo2.pdf'],
-            'Libre de Deuda': ['archivo1.pdf', 'archivo2.pdf'],
-            Luz: ['archivo1.pdf', 'archivo2.pdf'],
-            Planos: ['archivo1.pdf', 'archivo2.pdf'],
-            'Rentas Provincial': ['archivo1.pdf', 'archivo2.pdf'],
-          }
-        };
-        this.archivosKeys = Object.keys(this.inmueble.archivos).sort();
+        this.inmueble = data.inmueble;
+        console.log(data);
+        if (this.inmueble) {
+          this.archivosKeys = Object.keys(this.inmueble.archivos).sort();
+          setTimeout(() => {
+            this.loadTreeEvents();
+          }, 1);
+        } else {
+          window.alert('No existen archivos para el inmueble seleccionado');
+        }
       }
     });
   }

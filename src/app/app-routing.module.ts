@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'cargarUsuario', component: CargarusuarioComponent },
   { path: 'cargarInmueble', component: CargarinmuebleComponent },
   { path: 'detalleInmueble/:id', component: InmuebleComponent },
-  { path: 'informacion-adicional/:id', component: InformacionAdicionalComponent },
+  { path: 'informacion-adicional', component: InformacionAdicionalComponent },
   { path: 'mostrarGraficos', component: GraficosComponent },
   { path: 'cargarArchivos/:id', component: CargarArchivosComponent },
   { path: 'editarInmueble/:id', component: EditarInmuebleComponent },

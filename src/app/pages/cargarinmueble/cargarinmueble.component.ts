@@ -28,6 +28,7 @@ export class CargarinmuebleComponent implements OnInit {
     const cantHab = (document.getElementById('cantHab') as HTMLInputElement).value;
     const tipoInmueble = (document.getElementById('tipoInmueble') as HTMLInputElement).value;
     const tipoVenta = (document.getElementById('tipoVenta') as HTMLInputElement).value;
+    // VANI, Cambiar por el usuario que está ejecutando la carga
     const usuario = '5eb9d75c1d3f7c3efc86bfd7';
 
     // tslint:disable-next-line: max-line-length
