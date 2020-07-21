@@ -31,4 +31,16 @@
         <button type="button" class="btn btn-primary btn-lg btn-block" (click)="uploadArchivo()">Guardar</button>
 
     </div>
+    <div *ngIf="correctamente" class="alert alert-success m-4" role="alert">
+        <h4 class="alert-heading">Bien hecho!</h4>
+        <p>Los archivos han sido cargados correctamente</p>
+        <hr>
+        <!-- <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> -->
+    </div>
+    <div *ngIf="incorrectamente" class="alert alert-danger m-4" role="alert">
+        <h4 class="alert-heading">Ups!</h4>
+        <p>Lamentablemente el/los archivos que usted intenta cargar han tenido un problema para ser subidos. Intente nuevamente o cóntactese con la mesa de ayuda!</p>
+        <hr>
+        <!-- <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> -->
+    </div>
 </div>

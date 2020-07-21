@@ -39,7 +39,7 @@ export class ArbolArchivosComponent implements OnChanges {
       if (data.ok) {
         this.inmueble = data.inmueble;
         console.log(data);
-        if (this.inmueble) {
+        if (this.inmueble && this.inmueble.archivos) {
           this.archivosKeys = Object.keys(this.inmueble.archivos).sort();
           setTimeout(() => {
             this.loadTreeEvents();

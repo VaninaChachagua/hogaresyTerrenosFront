@@ -10,6 +10,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { InformacionAdicionalComponent } from './pages/informacion-adicional/informacion-adicional.component';
 import { CargarArchivosComponent } from './pages/cargar-archivos/cargar-archivos.component';
 import { EditarInmuebleComponent } from './pages/editar-inmueble/editar-inmueble.component';
+import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
+import { EditarTodosusrComponent } from './pages/editar-todosusr/editar-todosusr.component';
 
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'mostrarGraficos', component: GraficosComponent },
   { path: 'cargarArchivos/:id', component: CargarArchivosComponent },
   { path: 'editarInmueble/:id', component: EditarInmuebleComponent },
+  { path: 'editarUsuario/:id', component: EditarUsuarioComponent },
+  { path: 'editarTodos', component: EditarTodosusrComponent },
   { path: 'error', component: NotFoundComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: '**', pathMatch: 'full', redirectTo: 'home'}

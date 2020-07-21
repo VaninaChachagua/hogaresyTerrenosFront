@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { LoginService } from '../../../services/login.service';
 
 @Component({
@@ -9,9 +9,13 @@ import { LoginService } from '../../../services/login.service';
 })
 export class NavbarComponent implements OnInit {
   role: any;
+  name: any;
+  idUsr: any;
+  localStorage: any;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService,  private router: Router) {
     this.obtenerRole();
+    this.localStorage = localStorage;
   }
 
   ngOnInit() {
@@ -20,11 +24,31 @@ export class NavbarComponent implements OnInit {
   obtenerRole() {
     this.loginService.obtenerInfoPorTk().subscribe(data => {
       if (data.ok) {
+        this.name = data.dec.nombre;
         this.role = data.dec.role;
+        console.log(data.dec);
+        this.idUsr = data.dec._id;
       } else {
         this.role = null;
       }
     });
   }
-
+  iniciarSesion() {
+    this.router.navigate([`/login`]);
+  }
+  cerrarSesion() {
+    this.localStorage.removeItem('tk');
+    window.open(`${ window.location.hostname }/home`, '_self');
+  }
+  editarDatosMiCuenta() {
+    // llamar página editar
+    this.router.navigate([`/editarUsuario/${ this.idUsr }`]);
+  }
+  agregarNuevoUsuario() {
+    this.router.navigate([`/cargarUsuario`]);
+  }
+  editarUsuarios() {
+    // llamar a editar
+    console.log('Página editar');
+  }
 }

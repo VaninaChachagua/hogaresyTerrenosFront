@@ -22,6 +22,7 @@ import { CargarArchivosComponent } from './pages/cargar-archivos/cargar-archivos
 import { ArbolArchivosComponent } from './components/arbol-archivos/arbol-archivos.component';
 import { EditarInmuebleComponent } from './pages/editar-inmueble/editar-inmueble.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
+import { EditarTodosusrComponent } from './pages/editar-todosusr/editar-todosusr.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.co
     CargarArchivosComponent,
     ArbolArchivosComponent,
     EditarInmuebleComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    EditarTodosusrComponent
   ],
   imports: [
     BrowserModule,

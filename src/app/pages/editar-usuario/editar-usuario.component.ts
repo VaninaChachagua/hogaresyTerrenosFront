@@ -8,16 +8,17 @@ import {  ActivatedRoute } from '@angular/router';
   styleUrls: ['./editar-usuario.component.css']
 })
 export class EditarUsuarioComponent implements OnInit {
-  id: any;
+  idUsr: any;
   usuario: any;
   constructor(private usuariosService: UsuariosService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.usuariosService.getUsuarioId(this.id).subscribe(data => {
+    this.idUsr = this.route.snapshot.paramMap.get('id');
+    this.usuariosService.getUsuarioId(this.idUsr).subscribe(data => {
       if (data.ok) {
-        this.usuario = data.inmueble;
-        console.log(this.usuario);
+        this.usuario = data.usuarioBD;
+        console.log('Encontré usuario');
+        console.log(data);
         }
     });
   }

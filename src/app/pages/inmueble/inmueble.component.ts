@@ -55,4 +55,14 @@ export class InmuebleComponent implements OnInit {
   editarInmueble() {
     this.router.navigate([`/editarInmueble/${ this.inmueble._id }`]);
   }
+  eliminar() {
+    // window.confirm('¿Está seguro que desea eliminar éste inmueble?');
+    if (confirm('¿Está seguro que desea eliminar éste inmueble?')) {
+      // Save it!
+      console.log('Thing was saved to the database.');
+    } else {
+      // Do nothing!
+      console.log('Thing was not saved to the database.');
+    }
+  }
 }

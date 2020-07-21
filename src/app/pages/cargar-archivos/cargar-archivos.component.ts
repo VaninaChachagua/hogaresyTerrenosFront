@@ -17,6 +17,8 @@ export class CargarArchivosComponent implements OnInit {
   inmueble: any;
   selectedFile: ImageSnippet;
   archivo: any;
+  correctamente = false;
+  incorrectamente = false;
 
   constructor(private route: ActivatedRoute, private inmueblesService: InmueblesService) { }
 
@@ -40,6 +42,8 @@ export class CargarArchivosComponent implements OnInit {
 
   uploadArchivo() {
     console.log(this.archivo);
+    this.correctamente = false;
+    this.incorrectamente = false;
     // this.inmueblesService.uploadArchivos(this.archivo, this.id).subscribe(
     const tipoArchivo = (document.getElementById('tipoArchivo') as HTMLInputElement).value;
     console.log(tipoArchivo);
@@ -47,8 +51,10 @@ export class CargarArchivosComponent implements OnInit {
       (res) => {
         if (res.ok) {
           console.log('Se cargó con archivo');
+          this.correctamente = true;
         } else {
           console.log('Problema para cargar el archivo');
+          this.incorrectamente = true;
         }
       });
   }

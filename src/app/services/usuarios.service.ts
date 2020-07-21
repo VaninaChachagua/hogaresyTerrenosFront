@@ -18,6 +18,9 @@ export class UsuariosService {
   getUsuarioId(mail) {
     return this.http.get(endpoint + '/usuarioid/' + mail).pipe(catchError(this.handleError<any>('getUsuarios')));
   }
+  getUsuarios() {
+    return this.http.get(endpoint + '/usuario').pipe(catchError(this.handleError<any>('getUsuarios')));
+  }
   postUsuario(nombre, apellido, email, telefono1, telalternativo, password, role) {
     // tslint:disable-next-line: max-line-length
     return this.http.post(endpoint + '/usuario', {nombre, apellido, email, telefono1, telalternativo, password, role}).pipe(catchError(this.handleError<any>('usuario')));
