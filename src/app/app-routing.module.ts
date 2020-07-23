@@ -12,6 +12,7 @@ import { CargarArchivosComponent } from './pages/cargar-archivos/cargar-archivos
 import { EditarInmuebleComponent } from './pages/editar-inmueble/editar-inmueble.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 import { EditarTodosusrComponent } from './pages/editar-todosusr/editar-todosusr.component';
+import { AboutComponent } from './pages/about/about.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'editarInmueble/:id', component: EditarInmuebleComponent },
   { path: 'editarUsuario/:id', component: EditarUsuarioComponent },
   { path: 'editarTodos', component: EditarTodosusrComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'error', component: NotFoundComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: '**', pathMatch: 'full', redirectTo: 'home'}

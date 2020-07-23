@@ -49,6 +49,6 @@ export class NavbarComponent implements OnInit {
   }
   editarUsuarios() {
     // llamar a editar
-    console.log('Página editar');
+    this.router.navigate([`/editarTodos`]);
   }
 }

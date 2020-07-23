@@ -23,6 +23,7 @@ export class GraficosComponent implements OnInit {
   ngOnInit() {
     this.consultasService.getInmuebles().subscribe(async data => {
       this.inmuebles = data.inmueble;
+      this.buscarInmueblesMasVistos();
       // identificador
       // precio
       console.log(data);
@@ -30,6 +31,7 @@ export class GraficosComponent implements OnInit {
       });
   }
   buscarBarriosMasVistos() {
+    document.getElementById('nombre').innerHTML = 'Barrios más Vistos';
     const barrios = {};
     this.inmuebles.forEach( inm => {
       if ( inm.barrio in barrios) {
@@ -50,6 +52,7 @@ export class GraficosComponent implements OnInit {
   }
 
   buscarInmueblesMasVistos() {
+      document.getElementById('nombre').innerHTML = 'Inmuebles más Vistos';
       let casitas = [];
       const cant = 10;
       Object.keys(this.inmuebles).forEach(e => {

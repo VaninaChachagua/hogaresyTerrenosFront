@@ -26,7 +26,9 @@ export class CargarArchivosComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.inmueblesService.getInmueble(this.id).subscribe(data => {
       if (data.ok) {
-        this.inmueble = data.inmueble;
+        if (data.inmueble !== '') {
+          this.inmueble = data.inmueble;
+        }
       }
     });
   }

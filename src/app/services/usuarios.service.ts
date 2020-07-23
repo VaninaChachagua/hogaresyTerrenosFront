@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
@@ -10,8 +9,10 @@ const endpoint = 'http://localhost:3000';
   providedIn: 'root'
 })
 export class UsuariosService {
-
-  constructor(private http: HttpClient) { }
+  localStorageService: any;
+  constructor(private http: HttpClient) {
+    
+   }
   getUsuario(mail) {
     return this.http.get(endpoint + '/usuarios/' + mail).pipe(catchError(this.handleError<any>('getUsuarios')));
   }
@@ -19,15 +20,26 @@ export class UsuariosService {
     return this.http.get(endpoint + '/usuarioid/' + mail).pipe(catchError(this.handleError<any>('getUsuarios')));
   }
   getUsuarios() {
-    return this.http.get(endpoint + '/usuario').pipe(catchError(this.handleError<any>('getUsuarios')));
+    this.localStorageService = localStorage;
+    const headers = new HttpHeaders ({ token: this.localStorageService.tk });
+    return this.http.get(endpoint + '/usuario' , {  headers }).pipe(catchError(this.handleError<any>('getUsuarios')));
   }
   postUsuario(nombre, apellido, email, telefono1, telalternativo, password, role) {
     // tslint:disable-next-line: max-line-length
-    return this.http.post(endpoint + '/usuario', {nombre, apellido, email, telefono1, telalternativo, password, role}).pipe(catchError(this.handleError<any>('usuario')));
+    return this.http.post(endpoint + '/usuario', {nombre, apellido, email, telefono1, telalternativo, password, role} ).pipe(catchError(this.handleError<any>('usuario')));
   }
-  putUsuario(nombre, apellido, email, telefono1, telalternativo, password, role) {
+  putUsuario(id, nombre, apellido, email, telefono1, telalternativo, role) {
     // tslint:disable-next-line: max-line-length
-    return this.http.put(endpoint + '/usuario', {nombre, apellido, email, telefono1, telalternativo, password, role}).pipe(catchError(this.handleError<any>('usuario')));
+    this.localStorageService = localStorage;
+    const headers = new HttpHeaders ({ token: this.localStorageService.tk });
+    // tslint:disable-next-line: max-line-length
+    return this.http.put(endpoint + '/usuario/' + id, {nombre, apellido, email, telefono1, telalternativo, role}, {  headers }).pipe(catchError(this.handleError<any>('usuario')));
+  }
+  deleteUsuario(id) {
+    return this.http.delete(endpoint + '/usuario/' + id).pipe(catchError(this.handleError<any>('deleteUsuario')));
+  }
+  blanquearPwd(id) {
+    return this.http.put(endpoint + '/usuario/blanquearClave/' + id, {}).pipe(catchError(this.handleError<any>('blanquearPwd')));
   }
   // mostrar errores en chrome
   private handleError<T>(operation = 'operation', result?: T) {

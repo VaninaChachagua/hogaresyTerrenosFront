@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { ArbolArchivosComponent } from './components/arbol-archivos/arbol-archiv
 import { EditarInmuebleComponent } from './pages/editar-inmueble/editar-inmueble.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 import { EditarTodosusrComponent } from './pages/editar-todosusr/editar-todosusr.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -44,13 +46,15 @@ import { EditarTodosusrComponent } from './pages/editar-todosusr/editar-todosusr
     ArbolArchivosComponent,
     EditarInmuebleComponent,
     EditarUsuarioComponent,
-    EditarTodosusrComponent
+    EditarTodosusrComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

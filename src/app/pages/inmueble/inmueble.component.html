@@ -2,7 +2,7 @@
 
     {{inmueble.identificador | uppercase}} <small> {{inmueble.tipoVenta  }}</small></h1>
 <hr>
-<div class="row animated fadeIn fast" style="height: 70vh;">
+<div class="row animated fadeIn fast" style="min-height: 70vh;">
     <div style=" width: 40%; position: relative; height: 100%;">
         <div>
             <div class="padre_carrusel" *ngIf="imagenesInmueble.length != 0">
@@ -18,7 +18,7 @@
         <div>
             <h3>{{inmueble.tipoInmueble}}</h3>
             <hr>
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" *ngIf="role === 'ADMIN_ROLE'">
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <button type="button" class="btn btn-sm btn-outline-info " (click)="cargarArchivos()">Cargar Archivos</button>

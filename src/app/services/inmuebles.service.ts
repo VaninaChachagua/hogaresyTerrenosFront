@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
@@ -10,8 +10,11 @@ const endpoint = 'http://localhost:3000';
   providedIn: 'root'
 })
 export class InmueblesService {
+  localStorageService: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.localStorageService = localStorage;
+  }
   // getInmuebleMail(mail) {
   //   return this.http.get(endpoint + '/inmueble/' + mail).pipe(catchError(this.handleError<any>('getInmueble')));
   // }
@@ -22,9 +25,15 @@ export class InmueblesService {
     // tslint:disable-next-line: max-line-length
     return this.http.post(endpoint + '/inmueble', {identificador, precio, moneda, direccion, barrio, descripcion, cantHab, tipoInmueble, tipoVenta, usuario}).pipe(catchError(this.handleError<any>('inmueble')));
   }
-  putInmueble(identificador, precio, moneda, direccion, barrio, descripcion, cantHab, tipoInmueble, tipoVenta, usuario) {
+  putInmueble(id, identificador, precio, moneda, direccion, barrio, descripcion, cantHab, tipoInmueble, tipoVenta, usuario) {
+    const headers = new HttpHeaders ({ token: this.localStorageService.tk });
     // tslint:disable-next-line: max-line-length
-    return this.http.post(endpoint + '/inmueble', {identificador, precio, moneda, direccion, barrio, descripcion, cantHab, tipoInmueble, tipoVenta, usuario}).pipe(catchError(this.handleError<any>('inmueble')));
+    return this.http.put(endpoint + '/inmueble/' + id, {identificador, precio, moneda, direccion, barrio, descripcion, cantHab, tipoInmueble, tipoVenta, usuario}, {  headers }).pipe(catchError(this.handleError<any>('inmueble')));
+  }
+  deleteInmueble(id) {
+    const headers = new HttpHeaders ({ token: this.localStorageService.tk });
+    // tslint:disable-next-line: max-line-length
+    return this.http.delete(endpoint + '/inmueble/' + id, {  headers } ).pipe(catchError(this.handleError<any>('getInmueble')));
   }
   putVisitas(id) {
     return this.http.put(endpoint + '/inmueble/visitas/' + id, {}).pipe(catchError(this.handleError<any>('inmueble')));
@@ -56,5 +65,9 @@ export class InmueblesService {
     console.log(formDat);
     // return this.http.put(endpoint + '/uploadarchivos/' + id, formData).pipe(catchError(this.handleError<any>('inmueble')));
     return this.http.put(endpoint + '/uploadarchivos/' + tipo + '/' + id, formDat).pipe(catchError(this.handleError<any>('inmueble')));
+  }
+  borrarArchivos(id, tipo, nombreArchivo) {
+    return this.http.put(endpoint + `/upload/borrarArchivos/${ id }/${ tipo }/${ nombreArchivo }`, {})
+    .pipe(catchError(this.handleError<any>('inmueble')));
   }
 }

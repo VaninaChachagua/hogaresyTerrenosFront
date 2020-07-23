@@ -16,6 +16,8 @@ export class EditarInmuebleComponent implements OnInit {
   inmueble: any;
   image: any;
   selectedFile: ImageSnippet;
+  archivosKeys: any;
+
   constructor(private route: ActivatedRoute, private inmueblesService: InmueblesService) { }
 
   ngOnInit() {
@@ -24,6 +26,10 @@ export class EditarInmuebleComponent implements OnInit {
       if (data.ok) {
         this.inmueble = data.inmueble;
         console.log(this.inmueble);
+        this.archivosKeys = Object.keys(this.inmueble.archivos);
+        setTimeout(() => {
+          this.loadTreeEvents();
+        }, 1);
         }
     });
   }
@@ -40,7 +46,7 @@ export class EditarInmuebleComponent implements OnInit {
     const usuario = '5eb9d75c1d3f7c3efc86bfd7';
 
     // tslint:disable-next-line: max-line-length
-    this.inmueblesService.putInmueble(identificador, precio, moneda, direccion, barrio, descripcion, cantHab, tipoInmueble, tipoVenta, usuario).subscribe(data => {
+    this.inmueblesService.putInmueble(this.id, identificador, precio, moneda, direccion, barrio, descripcion, cantHab, tipoInmueble, tipoVenta, usuario).subscribe(data => {
       if (data.ok) {
         window.alert('Tu inmueble ha sido cargado con exito');
         this.uploadImage(data.inmueble._id);
@@ -75,5 +81,38 @@ export class EditarInmuebleComponent implements OnInit {
         console.log('Problema para cargar la imagen');
       }
     });
+  }
+
+  borrar(type, id, e) {
+    // e.target.parentElement.parentElement.remove();
+    // window.confirm('¿Está seguro que desea eliminar este elemento?');
+    if (confirm('¿Está seguro que desea eliminar este elemento?')) {
+      // Save it!
+      this.inmueblesService.borrarArchivos(this.id, type, id).subscribe(data => {
+        console.log(data);
+        if (data.ok) {
+          console.log('Thing was saved to the database.');
+          let t = e.target;
+          while (t.tagName !== 'LI' && t.id !== 'imagecontainer') {
+            t = t.parentElement;
+          }
+          t.remove();
+        }
+      });
+    } else {
+      // Do nothing!
+      console.log('Thing was not saved to the database.');
+    }
+  }
+
+  loadTreeEvents() {
+    const toggler = document.getElementsByClassName('caret');
+    let i;
+    for (i = 0; i < toggler.length; i++) {
+      toggler[i].addEventListener('click', function() {
+        this.parentElement.querySelector('.nested').classList.toggle('active');
+        this.classList.toggle('caret-down');
+      });
+    }
   }
 }

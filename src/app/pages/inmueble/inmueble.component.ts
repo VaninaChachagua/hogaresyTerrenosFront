@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // Para tomar los valores de los parámetros
 import { ActivatedRoute, Router } from '@angular/router';
 import { InmueblesService } from '../../services/inmuebles.service';
+import { LoginService } from '../../services/login.service';
 
 
 @Component({
@@ -14,13 +15,16 @@ export class InmuebleComponent implements OnInit {
 
   inmueble: any = {};
   imagenesInmueble: any = [];
+  localStorage: any;
+  role: any;
 
   constructor( private activatedRoute: ActivatedRoute,
                // tslint:disable-next-line: variable-name
-               private _inmueblesService: InmueblesService, private router: Router) {
+               private _inmueblesService: InmueblesService, private router: Router, private loginService: LoginService) {
   }
 
   ngOnInit() {
+    this.localStorage = localStorage;
     // Me suscribo al observable
     this.activatedRoute.params.subscribe( params => {
 
@@ -32,6 +36,7 @@ export class InmuebleComponent implements OnInit {
          this.imagenes();
         });
     });
+    this.obtenerRole();
   }
   mail() {
     const para = this.inmueble.usuario.email;
@@ -60,9 +65,31 @@ export class InmuebleComponent implements OnInit {
     if (confirm('¿Está seguro que desea eliminar éste inmueble?')) {
       // Save it!
       console.log('Thing was saved to the database.');
+      // deleteInmueble
+      this._inmueblesService.deleteInmueble(this.inmueble._id).subscribe(inmBorrado => {
+        if (inmBorrado.ok == true) {
+          console.log('Inmueble Borrado con éxito');
+          console.log(inmBorrado);
+          window.alert('Inmueble borrado con éxito');
+        } else {
+          console.log('Error');
+          console.log(inmBorrado);
+          window.alert('No se pudo eliminar el inmueble');
+        }
+       });
     } else {
       // Do nothing!
       console.log('Thing was not saved to the database.');
     }
+  }
+  obtenerRole() {
+    this.loginService.obtenerInfoPorTk().subscribe(data => {
+      if (data.ok) {
+        this.role = data.dec.role;
+        console.log(data.dec);
+      } else {
+        this.role = null;
+      }
+    });
   }
 }
