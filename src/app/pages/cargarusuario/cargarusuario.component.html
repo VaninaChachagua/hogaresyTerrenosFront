@@ -40,24 +40,24 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="role">role</label>
-                    <select class="custom-select d-block w-100" id="role" required>
-                        <option (click)="ifAdmin(admin)" value="ADMIN_ROLE">Administrador</option>
-                        <option (click)="ifAdmin('user')" value="USER_ROLE">Dueño de inmueble</option>
+                    <select (change)="ifAdmin($event)" class="custom-select d-block w-100" id="role" required>
+                        <option value="ADMIN_ROLE">Administrador</option>
+                        <option value="USER_ROLE">Dueño de inmueble</option>
                     </select>
                 </div>
-                <div>
-                    <div class="col-md mb-5" *ngIf="dropdownList.length != 0">
+                <div *ngIf="!roleAdmin">
+                    <div class="col-md mb-2" *ngIf="dropdownList.length != 0">
                         <label for="role">Inmuebles asociados:</label>
-                        <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [data]="dropdownList" [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                        <ng-multiselect-dropdown [placeholder]="'Seleccionar'" [data]="dropdownList" [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
                         </ng-multiselect-dropdown>
                     </div>
                 </div>
-
-                <hr class="mb-4">
             </div>
 
         </div>
-        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="crearUsuario()">Guardar</button>
+        <div class="col-md mt-4">
+            <button type="button " class="btn btn-primary btn-lg btn-block " (click)="crearUsuario() ">Guardar</button>
+        </div>
     </div>
 
 </div>

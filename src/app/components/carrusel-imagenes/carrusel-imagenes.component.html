@@ -2,7 +2,7 @@
     <div class="carousel-inner " *ngIf="imagenesInmueble.length != 0">
         <div class="carousel-item active medio" *ngFor="let inm of imagenesInmueble ; let index=index" [class.active]="index == 0">
             <!-- <img src="assets/img/ancient-70996_1280.jpg" class="d-block carrusel" alt="casa de ladrillos"> -->
-            <img src="http://localhost:3000/{{inm.img}}" class="d-block carrusel" alt="..">
+            <img style="" id="mostrar" src="http://localhost:3000/{{inm.img}}" (click)="iraInm(inm._id)" class="d-block carrusel" alt="..">
 
         </div>
 

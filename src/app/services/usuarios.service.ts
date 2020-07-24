@@ -11,7 +11,6 @@ const endpoint = 'http://localhost:3000';
 export class UsuariosService {
   localStorageService: any;
   constructor(private http: HttpClient) {
-    
    }
   getUsuario(mail) {
     return this.http.get(endpoint + '/usuarios/' + mail).pipe(catchError(this.handleError<any>('getUsuarios')));
@@ -27,6 +26,14 @@ export class UsuariosService {
   postUsuario(nombre, apellido, email, telefono1, telalternativo, password, role) {
     // tslint:disable-next-line: max-line-length
     return this.http.post(endpoint + '/usuario', {nombre, apellido, email, telefono1, telalternativo, password, role} ).pipe(catchError(this.handleError<any>('usuario')));
+  }
+  putUsrInmueble(id, inmuebles) {
+    console.log(inmuebles);
+    // tslint:disable-next-line: max-line-length
+    this.localStorageService = localStorage;
+    const headers = new HttpHeaders ({ token: this.localStorageService.tk });
+    // tslint:disable-next-line: max-line-length
+    return this.http.put(endpoint + '/usuarioInmueble/' + id, {inmuebles}, {  headers } ).pipe(catchError(this.handleError<any>('usuarioInmueble')));
   }
   putUsuario(id, nombre, apellido, email, telefono1, telalternativo, role) {
     // tslint:disable-next-line: max-line-length

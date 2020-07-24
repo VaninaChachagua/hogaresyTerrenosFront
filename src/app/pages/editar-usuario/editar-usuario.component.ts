@@ -25,13 +25,11 @@ export class EditarUsuarioComponent implements OnInit {
   actualizarUsuario() {
     const firstName = (document.getElementById('firstName' )as HTMLInputElement).value;
     const lastName = (document.getElementById('lastName' )as HTMLInputElement).value;
-    const email = (document.getElementById('email' )as HTMLInputElement).value;
+    const email = this.usuario.email;
     const telefono1 = (document.getElementById('telefono1' )as HTMLInputElement).value;
     const telalternativo = (document.getElementById('telalternativo' )as HTMLInputElement).value;
-    const password = (document.getElementById('password' )as HTMLInputElement).value;
-    const role = (document.getElementById('role' )as HTMLInputElement).value;
-    console.log(this.usuariosService);
-    this.usuariosService.postUsuario(firstName, lastName, email, telefono1, telalternativo, password, role).subscribe(data => {
+    const role = this.usuario.role;
+    this.usuariosService.putUsuario(this.idUsr, firstName, lastName, email, telefono1, telalternativo, role).subscribe(data => {
       if (data.ok) {
         window.alert('Tu usuario ha sido cargado con exito');
       } else{

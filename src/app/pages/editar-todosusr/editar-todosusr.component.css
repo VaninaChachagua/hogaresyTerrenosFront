@@ -7,11 +7,6 @@ tbody tr:hover {
     color: black;
 }
 
-
-/* tbody tr:hover td {
-    font-size: 100%
-} */
-
 .table-container {
     width: 97%;
     border: solid 1px #cccccc;
@@ -29,27 +24,6 @@ tbody tr:hover {
 th {
     padding: 0 5px;
 }
-
-
-/* th span {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    display: block;
-    line-height: 50px;
-    border-left: solid 1px #3a84ac;
-    border-bottom: solid 1px #cccccc;
-    padding-left: 5px;
-    margin-left: -5px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    color: #FFF;
-    background: #549DC5;
-} */
-
-
-/* th,
-td, */
 
 th>span {
     text-align: center;
@@ -85,19 +59,17 @@ tbody>tr>td {
 
 .limit-td>div {
     position: relative;
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%; */
 }
 
 .card {
-    max-height: 96%;
-    width: 98%;
-    top: 2%;
-    right: 1%;
-    position: absolute;
+    margin: 20px;
+}
+
+.limit-td>input {
+    border: transparent;
+    background: transparent;
+    width: fit-content;
+    text-align-last: center;
 }
 
 .animatedArrow {
@@ -170,45 +142,6 @@ table>thead>tr>th>span {
     margin-top: 5vh;
     left: 50%;
     transform: translateX(-50%);
-}
-
-
-/* #chartDiv:nth-child(odd) {
-    float: right;
-}
-
-#chartDiv:nth-child(even) {
-    float: left;
-} */
-
-svg {
-    overflow: visible;
-}
-
-.chartTitle {
-    position: relative;
-    height: 40px;
-    margin-top: 20px;
-}
-
-.chartTitle>h3 {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#sidebarDiv>div>h1 {
-    font-weight: 500;
-    text-align-last: center;
-}
-
-#componentDependenciesTreeDiv {
-    position: relative;
-    width: 90%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 50px;
-    margin-top: 30px;
 }
 
 #table>#scrollable::-webkit-scrollbar-track {

@@ -19,8 +19,9 @@ export class CargarusuarioComponent implements OnInit {
   selectedItems = [];
   dropdownSettings: IDropdownSettings = {};
   inmuebles: any;
-  roleAdmin: any;
+  roleAdmin = true;
   admin = 'isAdminRole';
+  idInmueblesSelec: any = [];
 
   ngOnInit() {
     this.consultarTodosInmuebles();
@@ -35,7 +36,6 @@ export class CargarusuarioComponent implements OnInit {
     };
   }
   crearUsuario() {
-    console.log(this.selectedItems);
     const firstName = (document.getElementById('firstName' )as HTMLInputElement).value;
     const lastName = (document.getElementById('lastName' )as HTMLInputElement).value;
     const email = (document.getElementById('email' )as HTMLInputElement).value;
@@ -43,13 +43,35 @@ export class CargarusuarioComponent implements OnInit {
     const telalternativo = (document.getElementById('telalternativo' )as HTMLInputElement).value;
     const password = (document.getElementById('password' )as HTMLInputElement).value;
     const role = (document.getElementById('role' )as HTMLInputElement).value;
-    console.log(this.usuariosService);
     this.usuariosService.postUsuario(firstName, lastName, email, telefono1, telalternativo, password, role).subscribe(data => {
       if (data.ok) {
         window.alert('Tu usuario ha sido cargado con exito');
+        this.actualizarDatoInm(data.usuario._id);
       } else {
-        console.log(data);
         window.alert('Intente con otro mail');
+      }
+    });
+    this.limpieza();
+  }
+  limpieza() {
+    (document.getElementById('firstName' )as HTMLInputElement).value = '';
+    (document.getElementById('lastName' )as HTMLInputElement).value = '';
+    (document.getElementById('email' )as HTMLInputElement).value = '';
+    (document.getElementById('telefono1' )as HTMLInputElement).value = '';
+    (document.getElementById('telalternativo' )as HTMLInputElement).value = '';
+    (document.getElementById('password' )as HTMLInputElement).value = '';
+    (document.getElementById('role' )as HTMLInputElement).value = 'ADMIN_ROLE';
+    this.selectedItems = [];
+    this.roleAdmin = true;
+  }
+
+  actualizarDatoInm(id) {
+
+    this.selectedItems.forEach(e => {
+      this.idInmueblesSelec.push(e.item_id);
+    });
+    this.usuariosService.putUsrInmueble(id, this.idInmueblesSelec).subscribe(data => {
+      if (data.ok) {
       }
     });
   }
@@ -57,16 +79,13 @@ export class CargarusuarioComponent implements OnInit {
     this.consultasService.getInmuebles().subscribe(data => {
       if (data.ok) {
         this.inmuebles = data.inmueble;
-        console.log(this.inmuebles);
         this.cargarDropdown();
       }
     });
   }
   onItemSelect(item: any) {
-    console.log(item);
   }
   onSelectAll(items: any) {
-    console.log(items);
   }
   cargarDropdown() {
     Object.keys(this.inmuebles).forEach(e => {
@@ -76,11 +95,12 @@ export class CargarusuarioComponent implements OnInit {
     this.dropdownList.sort((a, b) => (a.item_text < b.item_text) ? -1 : ((b.item_text < a.item_text) ? 1 : 0));
   }
   // Función para cambiar de estado la bandera y deshabilitar el cambio
-  ifAdmin(usr) {
-    if(usr === 'isAdminRole') {
+  ifAdmin(event) {
+    if (event.target.value === 'ADMIN_ROLE') {
       this.roleAdmin = true;
     } else {
       this.roleAdmin = false;
     }
   }
+
 }

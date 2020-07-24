@@ -11,8 +11,8 @@
             <a class="dropdown-item" (click)="ordenar(-1,'barrio')">Barrio Z-A</a>
             <a class="dropdown-item" (click)="ordenar(1, 'precio')">Mayor precio</a>
             <a class="dropdown-item" (click)="ordenar(-1, 'precio')">Menor precio</a>
-            <a class="dropdown-item" (click)="ordenar(1, 'fechaAlta')">Más recientes</a>
-            <a class="dropdown-item" (click)="ordenar(-1, 'fechaAlta')">Más antiguos</a>
+            <a class="dropdown-item" (click)="ordenar(-1, 'fechaAlta')">Más recientes</a>
+            <a class="dropdown-item" (click)="ordenar(1, 'fechaAlta')">Más antiguos</a>
         </div>
     </div>
     <div class="btn-group m-2">
@@ -43,8 +43,8 @@
             <span class="sr-only">Tipo de moneda</span>
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" (click)="filtro('moneda','ARS')">ARS</a>
-            <a class="dropdown-item" (click)="filtro('moneda','USD')">USD</a>
+            <a class="dropdown-item" (click)="filtro('moneda','A$R')">A$R</a>
+            <a class="dropdown-item" (click)="filtro('moneda','U$D')">U$D</a>
         </div>
     </div>
     <div class="btn-group m-2">
@@ -60,6 +60,17 @@
             <a class="dropdown-item" (click)="filtro('cantHab','5')">5</a>
         </div>
     </div>
+
+    <div class="btn-group m-2">
+        <button type="button" class="btn btn-info">Barrios</button>
+        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Barrios</span>
+            </button>
+        <div class="dropdown-menu" style="max-height: 40vh; overflow-y: auto;">
+            <a class="dropdown-item" *ngFor="let barrios of labels" (click)="filtro('barrio',barrios)">{{ barrios }}</a>
+        </div>
+    </div>
+
     <div class="btn  m-2">
         <button type="button" class="btn btn-danger" (click)="limpiar()">Limpiar filtros</button>
     </div>
@@ -67,13 +78,12 @@
         <input class="form-control mr-sm-2" id="searchInput" [(ngModel)]="buscandoSearch" (keyup)="search($event)" type="text" placeholder="Search" aria-label="Search">
         <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
     </div>
-</div>
 
-<div class="m-3 card-columns">
-    <app-tarj-inmueble *ngFor="let inm of inmueblesFiltrados || inmuebles " [inmueble]=inm></app-tarj-inmueble>
-</div>
+    <div class="m-3 card-columns">
+        <app-tarj-inmueble *ngFor="let inm of inmueblesFiltrados || inmuebles " [inmueble]=inm></app-tarj-inmueble>
+    </div>
 
-<!-- <div *ngIf="inmueblesFiltrados.length == 0 ">
+    <!-- <div *ngIf="inmueblesFiltrados.length == 0 ">
     <div class="alert alert-info" role="alert">
         No existen resultados compatibles con su búsqueda.
     </div>

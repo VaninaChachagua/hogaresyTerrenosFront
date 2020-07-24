@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { ConsultasService } from '../../services/consultas.service';
 
 @Component({
   selector: 'app-editar-todosusr',
@@ -10,8 +12,11 @@ export class EditarTodosusrComponent implements OnInit {
   usuarios: any;
   textoBuscar: any;
   usuariosAMostrar: any;
+  dropdownList = [];
+  selectedItems = {};
+  dropdownSettings: IDropdownSettings = {};
 
-  constructor(private usuariosService: UsuariosService) { }
+  constructor(private usuariosService: UsuariosService, private consultasService: ConsultasService) { }
 
   ngOnInit() {
     this.usuariosService.getUsuarios().subscribe(async data => {
@@ -19,6 +24,27 @@ export class EditarTodosusrComponent implements OnInit {
       this.usuariosAMostrar = this.usuarios;
       console.log(this.usuarios);
       this.cargarEventoBusqueda();
+      this.consultasService.getInmuebles().subscribe(dataC => {
+        const inmuebles = dataC.inmueble;
+        inmuebles.forEach(inm => {
+          console.log({ item_id: inm._id, item_text: inm.identificador });
+          this.dropdownList.push({ item_id: inm._id, item_text: inm.identificador });
+        });
+        this.dropdownList.sort((a, b) => (a.item_text < b.item_text) ? -1 : ((b.item_text < a.item_text) ? 1 : 0));
+        this.usuarios.forEach(u => {
+          console.log(u);
+          if (u.inmueble) {
+            u.inmueble.forEach(i => {
+              console.log(i);
+              // this.selectedItems[u._id] = this.dropdownList.filter(a => a.item_id === i);
+              this.selectedItems[u._id] ? this.selectedItems[u._id] = this.dropdownList.filter(a => a.item_id === i) :
+                this.selectedItems[u._id].push(this.dropdownList.filter(a => a.item_id === i));
+              this.cargarMultiselect();
+
+            });
+          }
+        });
+      });
     });
   }
 
@@ -35,12 +61,6 @@ export class EditarTodosusrComponent implements OnInit {
   }
 
   borrar(u) {
-    // console.log(e.target);
-    // let t = e.target;
-    // while (t.tagName !== 'TR') {
-    //   t = t.parentElement;
-    // }
-    // t.remove();
     if (confirm(`¿Está seguro que desea borrar a ${ u.nombre } ${ u.apellido }?`)) {
       // Save it!
       this.usuarios.filter(a => a._id === u._id)[0].estado = false;
@@ -54,15 +74,24 @@ export class EditarTodosusrComponent implements OnInit {
       // Do nothing!
       console.log('Thing was not saved to the database.');
     }
-
   }
 
   cambiarValor(columna, usuario, e) {
-    this.usuarios.filter(a => a._id === usuario._id)[0][columna] = e.target.outerText;
+    this.usuarios.filter(a => a._id === usuario._id)[0][columna] = e.target.value;
     document.getElementById(`saveButton${ usuario._id }`)[`disabled`] = false;
+    console.log(this.usuarios);
   }
 
   guardar(u) {
+    const inmuebles = [];
+    if (this.selectedItems[u._id]) {
+    this.selectedItems[u._id].forEach(e => {
+      inmuebles.push(e.item_id);
+    });
+    this.usuariosService.putUsrInmueble(u._id, inmuebles).subscribe(data => {
+      console.log(data);
+    });
+  }
     this.usuariosService.putUsuario(u._id,
                                     u.nombre,
                                     u.apellido,
@@ -89,4 +118,31 @@ export class EditarTodosusrComponent implements OnInit {
     }
 
   }
+
+  cargarMultiselect() {
+    setTimeout(() => {
+      document.querySelectorAll('.dropdown-btn').forEach(e => {
+        e[`style`].padding = 0;
+      });
+    }, 1);
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
+  }
+
+  onItemSelect(u) {
+    document.getElementById(`saveButton${ u._id }`)[`disabled`] = false;
+    console.log(u);
+  }
+  onSelectAll(u) {
+    document.getElementById(`saveButton${ u._id }`)[`disabled`] = false;
+    console.log(u);
+  }
+
 }

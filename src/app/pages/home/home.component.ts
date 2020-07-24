@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     const cant = 3;
     Object.keys(this.inmuebles).forEach(e => {
         // tslint:disable-next-line: max-line-length
-        this.imagenesInmueble.push({ identificador: this.inmuebles[e].identificador, img: this.inmuebles[e].img[0], cantidad: this.inmuebles[e].visitas });
+        this.imagenesInmueble.push({ identificador: this.inmuebles[e].identificador, img: this.inmuebles[e].img[0], cantidad: this.inmuebles[e].visitas , _id: this.inmuebles[e]._id});
     });
     this.imagenesInmueble.sort((a, b) => (a.cantidad > b.cantidad) ? -1 : ((b.cantidad > a.cantidad) ? 1 : 0));
     this.imagenesInmueble = this.imagenesInmueble.slice(0, cant);

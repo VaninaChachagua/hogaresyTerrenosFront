@@ -11,6 +11,8 @@ export class FiltrosComponent implements OnInit {
   inmueblesFiltrados: any;
   buscandoSearch: any;
   inmueblesxFiltro: any;
+  // Nombre barrio
+  labels = [];
 
   constructor( private consultasService: ConsultasService ) { }
 
@@ -20,6 +22,7 @@ export class FiltrosComponent implements OnInit {
     // identificador
     // precio
     console.log(data);
+    this.barriosListado();
     });
   }
   ordenar(orden, tipo) {
@@ -47,17 +50,28 @@ export class FiltrosComponent implements OnInit {
     const buscando = event.target.value;
     // inmueblesFiltrados
     this.inmueblesFiltrados = this.inmueblesxFiltro || this.inmuebles;
-    console.log(this.inmueblesFiltrados);
     if (buscando.length > 0) {
 
       this.inmueblesFiltrados = this.inmueblesFiltrados.filter(c => {
-        console.log(Object.values(c));
         return Object.values(c).find((a: string) => {
-          console.log(a);
           return a ? a.toString().toLowerCase().includes(buscando.toLowerCase()) : null;
         });
       });
     }
+  }
+  barriosListado() {
+    const barrios = {};
+    this.inmuebles.forEach( inm => {
+      if ( inm.barrio in barrios) {
+        barrios[inm.barrio] += inm.visitas;
+      } else {
+        barrios[inm.barrio] = inm.visitas;
+      }
+    });
+    Object.keys(barrios).forEach(unbarrio => {
+      this.labels.push(unbarrio);
+    });
+    console.log(this.labels);
   }
 
 }
