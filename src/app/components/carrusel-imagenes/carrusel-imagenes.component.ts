@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ConsultasService } from '../../services/consultas.service';
 import { Router } from '@angular/router';
+import { EnvironmentConfigService } from '../../services/environment-config.service';
 
 @Component({
   selector: 'app-carrusel-imagenes',
@@ -10,10 +11,13 @@ import { Router } from '@angular/router';
 export class CarruselImagenesComponent implements OnInit {
   imagenInmueble: any = [];
   inmuebles: any = [];
+  host: any;
 
   @Input() imagenesInmueble: any = [];
 
-  constructor(private router: Router) {  }
+  constructor(private router: Router, private environmentConfigService: EnvironmentConfigService) {
+    this.environmentConfigService.currentIP.subscribe(data => { this.host = data; });
+   }
 
   ngOnInit() {
     this.convertirArray();

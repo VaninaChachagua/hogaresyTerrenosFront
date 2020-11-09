@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InmueblesService } from '../../services/inmuebles.service';
+import { EnvironmentConfigService } from '../../services/environment-config.service';
 // Modelo de clase imagen
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -17,8 +18,12 @@ export class EditarInmuebleComponent implements OnInit {
   image: any;
   selectedFile: ImageSnippet;
   archivosKeys: any;
+  host: any;
 
-  constructor(private route: ActivatedRoute, private inmueblesService: InmueblesService) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private route: ActivatedRoute, private inmueblesService: InmueblesService, private environmentConfigService: EnvironmentConfigService) {
+    this.environmentConfigService.currentIP.subscribe(data => { this.host = data; });
+   }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');

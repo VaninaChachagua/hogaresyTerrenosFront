@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { InmueblesService } from '../../services/inmuebles.service';
+import { EnvironmentConfigService } from '../../services/environment-config.service';
 
 @Component({
   selector: 'app-arbol-archivos',
@@ -11,8 +12,10 @@ export class ArbolArchivosComponent implements OnChanges {
   @Input() idInm: string ;
   inmueble: any;
   archivosKeys: any;
+  host: any;
 
-  constructor(private inmueblesService: InmueblesService) {
+  constructor(private inmueblesService: InmueblesService, private environmentConfigService: EnvironmentConfigService) {
+    this.environmentConfigService.currentIP.subscribe(data => { this.host = data; });
   }
 
   // tslint:disable-next-line: use-life-cycle-interface

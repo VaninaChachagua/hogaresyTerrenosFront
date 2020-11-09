@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router';
 
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+// import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { InmueblesService } from '../../services/inmuebles.service';
 import { ConsultasService } from '../../services/consultas.service';
 
@@ -17,7 +17,7 @@ export class CargarusuarioComponent implements OnInit {
 
   dropdownList = [];
   selectedItems = [];
-  dropdownSettings: IDropdownSettings = {};
+  dropdownSettings = {};
   inmuebles: any;
   roleAdmin = true;
   admin = 'isAdminRole';

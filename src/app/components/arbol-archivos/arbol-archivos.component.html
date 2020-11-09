@@ -1,7 +1,7 @@
 <ul id="myUL" *ngIf="inmueble">
     <li *ngFor="let tipoArch of archivosKeys"><span class="caret">{{ tipoArch }}</span>
         <ul class="nested">
-            <li *ngFor="let arch of inmueble.archivos[tipoArch]"><a target="_blank" href="http://localhost:3000/{{arch}}">{{ arch }}</a> </li>
+            <li *ngFor="let arch of inmueble.archivos[tipoArch]"><a target="_blank" href="{{host}}/{{arch}}">{{ arch }}</a> </li>
         </ul>
     </li>
 </ul>

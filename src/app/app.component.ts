@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EnvironmentConfigService } from './services/environment-config.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'HogaresYTerrenos';
   window = window;
+  constructor( private environmentConfigService: EnvironmentConfigService) {
+    this.environmentConfigService.getIP();
+  }
 }

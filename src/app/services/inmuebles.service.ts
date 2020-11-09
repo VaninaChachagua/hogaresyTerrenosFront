@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { EnvironmentConfigService } from './environment-config.service';
 
-const endpoint = 'http://localhost:3000';
+let endpoint = '';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ const endpoint = 'http://localhost:3000';
 export class InmueblesService {
   localStorageService: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private environmentConfigService: EnvironmentConfigService) {
+    this.environmentConfigService.currentIP.subscribe(data => { endpoint = data; });
     this.localStorageService = localStorage;
   }
   // getInmuebleMail(mail) {

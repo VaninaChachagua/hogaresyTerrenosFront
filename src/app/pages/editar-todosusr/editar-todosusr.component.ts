@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+// import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { ConsultasService } from '../../services/consultas.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class EditarTodosusrComponent implements OnInit {
   usuariosAMostrar: any;
   dropdownList = [];
   selectedItems = {};
-  dropdownSettings: IDropdownSettings = {};
+  dropdownSettings = {};
 
   constructor(private usuariosService: UsuariosService, private consultasService: ConsultasService) { }
 

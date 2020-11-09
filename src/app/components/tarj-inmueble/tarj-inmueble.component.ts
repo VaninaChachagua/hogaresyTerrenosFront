@@ -1,6 +1,7 @@
 
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
+import { EnvironmentConfigService } from '../../services/environment-config.service';
 
 @Component({
   selector: 'app-tarj-inmueble',
@@ -13,7 +14,10 @@ export class TarjInmuebleComponent implements OnInit {
   // Redireccionar al detalle
   @Input() index: number;
   @Output() inmuebleSeleccionado: EventEmitter<number>;
-  constructor( private router: Router) {
+  host: any;
+
+  constructor( private router: Router, private environmentConfigService: EnvironmentConfigService) {
+    this.environmentConfigService.currentIP.subscribe(data => { this.host = data; });
     this.inmuebleSeleccionado = new EventEmitter();
   }
   ngOnInit() {
