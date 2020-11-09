@@ -1,0 +1,328 @@
+@import url(https://fonts.googleapis.com/css?family=Exo:400,500,500italic,400italic,600,600italic,700,700italic,800,800italic,300,300italic);
+.contenido {
+    padding-top: 250px;
+    color: black;
+}
+
+.login-form {
+    width: 390px;
+    background-color: white;
+}
+
+.login-title {
+    font-family: "Exo", sans-serif;
+    text-align: center;
+    color: black;
+}
+
+.login-userinput {
+    margin-bottom: 10px;
+}
+
+.login-button {
+    margin-top: 10px;
+}
+
+.login-options {
+    margin-bottom: 0px;
+}
+
+.login-forgot {
+    float: right;
+}
+
+.iconit2:hover {
+    color: rgb(0, 0, 0);
+}
+
+
+/* tercero */
+
+.contenedorPpal {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.contenedorPpal,
+.contenidoBody {
+    width: 100%;
+    height: 100%;
+}
+
+.contenidoBody,
+a,
+button,
+input {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-weight: 400;
+    font-size: 0.938rem;
+    line-height: 1.15;
+}
+
+.contenidoBody {
+    position: relative;
+    background: url(/assets/img/inmobiliaria.png) no-repeat center fixed;
+    background-size: 100% 100%;
+    overflow-y: auto;
+    padding-top: 10%;
+    padding-bottom: 15%;
+}
+
+@media screen and (min-width: 768px) {
+    .contenidoBody {
+        min-height: 100%;
+        height: auto;
+        max-height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow-y: visible;
+    }
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+button:active,
+button:hover {
+    outline: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+.panel_blur,
+.panel {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .panel_blur,
+    .panel {
+        width: 350px;
+        height: 500px;
+        overflow-y: visible;
+    }
+}
+
+
+/**
+* Blur
+*/
+
+.panel_blur {
+    position: absolute;
+    /* puedo agregar una imágen a la caja */
+    /* background: url("https://image.ibb.co/jGk9RR/bg.jpg") no-repeat center fixed; */
+    background-color: white;
+    background-size: 100% 100%;
+    filter: blur(5px);
+}
+
+
+/**
+* Panel 
+*/
+
+.panel {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Forma del cuadrado */
+
+.panel__form-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+    /* Acá se hace gris*/
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .panel__form-wrapper {
+        padding: 10% 15%;
+        border-radius: 10px;
+        overflow-y: visible;
+    }
+}
+
+
+/* Titulo */
+
+.panel__link {
+    color: #ffffff;
+    font-size: 2rem;
+    transition: all 0.3s;
+    font-weight: 400;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+/**
+* Estilos para el formulario
+*/
+
+.form__row {
+    position: relative;
+    padding-top: 40px;
+}
+
+.form__input {
+    width: 100%;
+    padding: 5px 0;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    background: none;
+    cursor: pointer;
+}
+
+.form__input:focus,
+.form__input:active {
+    outline: 0;
+}
+
+.form__input:focus~.form__label,
+.form__input:active~.form__label,
+.form__input:valid~.form__label {
+    bottom: 30px;
+    font-size: 0.75rem;
+}
+
+.form__input:focus~.form__bar,
+.form__input:active~.form__bar {
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+
+/* linea de abajo de los botones */
+
+.form__bar {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #0e3f99;
+    transition: all 0.3s;
+}
+
+
+/* textos de inputs */
+
+.form__label {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    transition: all 0.3s;
+    pointer-events: none;
+}
+
+
+/* input 2  */
+
+.form__input2 {
+    width: 100%;
+    padding: 5px 0;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.iconit2 {
+    position: absolute;
+    right: 15%;
+    top: 53%;
+    bottom: 0;
+    width: 20px;
+    color: white;
+}
+
+.iconit {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url("data:image/svg+xml,%3Csvg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-eye-fill' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z'/%3E%3Cpath fill-rule='evenodd' d='M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z'/%3E%3C/svg%3E") no-repeat;
+}
+
+.form__labelVer {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url("data:image/svg+xml,%3Csvg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-eye-fill' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z'/%3E%3Cpath fill-rule='evenodd' d='M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z'/%3E%3C/svg%3E") no-repeat;
+    /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25' viewBox='0 0 25 25' fill-rule='evenodd'%3E%3Cpath d='M16.036 18.455l2.404-2.405 5.586 5.587-2.404 2.404zM8.5 2C12.1 2 15 4.9 15 8.5S12.1 15 8.5 15 2 12.1 2 8.5 4.9 2 8.5 2zm0-2C3.8 0 0 3.8 0 8.5S3.8 17 8.5 17 17 13.2 17 8.5 13.2 0 8.5 0zM15 16a1 1 0 1 1 2 0 1 1 0 1 1-2 0'%3E%3C/path%3E%3C/svg%3E") center / contain no-repeat; */
+    /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25' viewBox='0 0 25 25' fill-rule='evenodd'%3E%3Cpath d='M16.036 18.455l2.404-2.405 5.586 5.587-2.404 2.404zM8.5 2C12.1 2 15 4.9 15 8.5S12.1 15 8.5 15 2 12.1 2 8.5 4.9 2 8.5 2zm0-2C3.8 0 0 3.8 0 8.5S3.8 17 8.5 17 17 13.2 17 8.5 13.2 0 8.5 0zM15 16a1 1 0 1 1 2 0 1 1 0 1 1-2 0'%3E%3C/path%3E%3C/svg%3E") center / contain no-repeat; */
+}
+
+
+/* boton submitir */
+
+.form__submit {
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 30px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    background-color: #0da350;
+    cursor: pointer;
+}
+
+
+/* boton de volver al home */
+
+.panel__prev-btn {
+    width: 24px;
+    height: 24px;
+    background: none;
+    padding: 0;
+}
+
+.panel__prev-btn svg {
+    transition: fill 0.3s;
+}
+
+.panel__prev-btn:hover>svg {
+    fill: #0e3f99;
+}
