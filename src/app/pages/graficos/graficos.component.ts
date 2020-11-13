@@ -145,7 +145,7 @@ export class GraficosComponent implements OnInit {
         },
         title: {
           display: true,
-          text: 'Chart.js Polar Area Chart'
+          text: 'Reporte de inmuebles'
         },
         scale: {
           ticks: {

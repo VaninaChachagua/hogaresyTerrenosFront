@@ -11,9 +11,9 @@ export class EnvironmentConfigService {
   constructor() { }
   getIP() {
     //para desa
-    this.ip.next('http://localhost:3000');
+    // this.ip.next('http://localhost:3000');
 
     //para prod
-    // this.ip.next(window.location.origin);
+    this.ip.next(window.location.origin);
   }
 }

@@ -28,7 +28,7 @@ export class LogInComponent implements OnInit {
         this.localStorage.setItem('tk', data.token);
         // this.router.navigate(['home']);
         // window.location.replace(`${ window.location.hostname }/home`);
-        window.open(`${ window.location.hostname }/home`, '_self');
+        window.open(`/home`, '_self');
       } else {
         console.error('No se ha podido cargar la petición');
       }

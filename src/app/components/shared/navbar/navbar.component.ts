@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
   }
   cerrarSesion() {
     this.localStorage.removeItem('tk');
-    window.open(`${ window.location.hostname }/home`, '_self');
+    window.open(`/home`, '_self');
   }
   editarDatosMiCuenta() {
     // llamar página editar

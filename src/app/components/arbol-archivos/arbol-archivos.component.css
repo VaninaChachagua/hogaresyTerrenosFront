@@ -15,7 +15,7 @@ ul,
 
 .caret::before {
     content: "\25B6";
-    color: black;
+    color: rgb(75, 96, 238);
     display: inline-block;
     margin-right: 6px;
 }

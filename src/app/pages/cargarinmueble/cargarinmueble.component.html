@@ -3,7 +3,7 @@
         <div class="py-5 text-center">
             <h2>Cargar nuevo inmueble</h2>
         </div>
-        <div class="col-md-8 order-md-1">
+        <div class="col-md-8 order-md-1" style="margin: inherit;">
             <div class="mb-3">
                 <label for="identificador">Nombre o identificador del inmueble:</label>
                 <input type="text" class="form-control" id="identificador" placeholder="Dpto. 7mo piso Nueva Córdoba" required>
@@ -47,6 +47,7 @@
                 <option value="dpto">Departamento</option>
                 <option value="terreno">Terreno</option>
                 <option value="cabaña">Cabaña</option>
+                <option value="negocio">Negocio</option>
               </select>
             </div>
             <div class="mb-3">
@@ -65,8 +66,8 @@
 
             <div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Archivos</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label" style="padding-left: inherit;"> Imágnes</label>
+                    <div class="col-sm-8" style="padding-left: inherit;">
                         <input #imageInput type="file" class="form-control" id="archivo[]" name="archivo[]" multiple="" (change)="obtenerImagen(imageInput)">
                     </div>
 
@@ -74,6 +75,6 @@
             </div>
 
         </div>
-        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="crearInmueble()">Guardar</button>
+        <button style="margin-top: 5%;" type="button" class="btn btn-primary btn-lg btn-block" (click)="crearInmueble()">Guardar</button>
     </div>
 </div>

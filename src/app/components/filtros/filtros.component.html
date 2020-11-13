@@ -21,10 +21,11 @@
             <span class="sr-only">Tipo de Inmueble</span>
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" (click)="filtro('tipoInmueble','Cabaña')">Cabaña</a>
-            <a class="dropdown-item" (click)="filtro('tipoInmueble','Casa')">Casa</a>
-            <a class="dropdown-item" (click)="filtro('tipoInmueble','Departamento')">Departamento</a>
-            <a class="dropdown-item" (click)="filtro('tipoInmueble','Lote')">Lote</a>
+            <a class="dropdown-item" (click)="filtro('tipoInmueble','cabaña')">Cabaña</a>
+            <a class="dropdown-item" (click)="filtro('tipoInmueble','casa')">Casa</a>
+            <a class="dropdown-item" (click)="filtro('tipoInmueble','dpto')">Departamento</a>
+            <a class="dropdown-item" (click)="filtro('tipoInmueble','terreno')">Lote</a>
+            <a class="dropdown-item" (click)="filtro('tipoInmueble','negocio')">Negocio</a>
         </div>
     </div>
     <div class="btn-group m-2">
@@ -34,7 +35,7 @@
         </button>
         <div class="dropdown-menu">
             <a class="dropdown-item" (click)="filtro('tipoVenta','Alquiler')">Alquiler</a>
-            <a class="dropdown-item" (click)="filtro('tipoVenta','Compra')">Compra</a>
+            <a class="dropdown-item" (click)="filtro('tipoVenta','Venta')">Venta</a>
         </div>
     </div>
     <div class="btn-group m-2">
@@ -62,7 +63,7 @@
     </div>
 
     <div class="btn-group m-2 ">
-        <button type="button" class="btn btn-info botoncito">Barrios</button>
+        <button type="button" class="btn btn-info ">Barrios</button>
         <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Barrios</span>
             </button>

@@ -3,7 +3,7 @@
         <div class="py-5 text-center">
             <h2>Editar inmueble</h2>
         </div>
-        <div class="col-md-8 order-md-1" *ngIf="inmueble">
+        <div class="col-md-8 order-md-1" *ngIf="inmueble" style="margin: inherit;">
             <div class="mb-3">
                 <label for="identificador">Nombre o identificador del inmueble:</label>
                 <input type="text" class="form-control" id="identificador" value="{{inmueble.identificador}}" required>
@@ -23,11 +23,11 @@
             </div>
             <div class="mb-3">
                 <label for="barrio">Barrio:</label>
-                <input type="text" class="form-control" id="barrio" value="{{inmueble.direccion}}" required>
+                <input type="text" class="form-control" id="barrio" value="{{inmueble.barrio}}" required>
             </div>
             <div class="mb-3">
                 <label for="direccion">Direccion:</label>
-                <input type="text" class="form-control" id="direccion" value="{{inmueble.barrio}}" required>
+                <input type="text" class="form-control" id="direccion" value="{{inmueble.direccion}}" required>
             </div>
 
             <div class="mb-3 ">
@@ -54,6 +54,7 @@ inmueble.tipoVenta}}" required> -->
               <option value="dpto">Departamento</option>
               <option value="terreno">Terreno</option>
               <option value="cabaña">Cabaña</option>
+              <option value="negocio">Negocio</option>
             </select>
             </div>
             <div class="mb-3">
